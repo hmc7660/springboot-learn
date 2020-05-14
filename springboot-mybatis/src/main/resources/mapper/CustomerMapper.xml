@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hmc.mapper.CustomerMapper">
+
+
+    <select id="queryCustomerList" resultType="Customer">
+        select * from tb_customer
+    </select>
+
+    <select id="queryCustomerById" parameterType="int" resultType="Customer">
+        select * from tb_customer where id = #{id}
+    </select>
+
+    <insert id="addCustomer" parameterType="Customer">
+        insert into tb_customer (name,telephone,address,remark) value(#{name},#{telephone},#{address},#{remark})
+    </insert>
+
+    <update id="updateCustomer" parameterType="Customer">
+        update tb_customer set name=#{name},telephone=#{telephone},address=#{address},remark=#{remark} where id=#{id}
+    </update>
+
+    <delete id="deleteCustomer" parameterType="int">
+        delete from tb_customer where id=#{id}
+    </delete>
+</mapper>
